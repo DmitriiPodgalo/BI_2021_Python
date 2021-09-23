@@ -11,4 +11,7 @@ while True:
         print('Unknown error, please, try again!')
     else:
         break
+
 print(c.convert(value, 'USD', 'RUB'))
+
+# Here is some conflict
