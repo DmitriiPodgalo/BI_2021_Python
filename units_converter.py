@@ -11,4 +11,8 @@ while True:
         print('Unknown error, please, try again!')
     else:
         break
+
 print(c.convert(value, 'RUB', 'USD'))
+
+# Something will be there.
+# The second line.
