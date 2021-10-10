@@ -7,8 +7,6 @@ while True:
         value = float(input('USD-RUB converter, please, enter the number value: '))
     except ValueError:
         print('Invalid inputs, please, try again!')
-    except:
-        print('Unknown error, please, try again!')
     else:
         break
 
