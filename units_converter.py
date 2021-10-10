@@ -4,7 +4,7 @@ c = CurrencyConverter()
 
 while True:
     try:
-        value = float(input('USD-RUB converter, please, enter the number value: '))
+        value = float(input('USD-RUB converter, enter the number value: '))
     except ValueError:
         print('Invalid inputs, please, try again!')
     else:
