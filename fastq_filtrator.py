@@ -111,5 +111,3 @@ def filter_quality(quality_threshold, list_):
     if bound >= quality_threshold:
         return list_
 
-main(input_fastq, output_file_prefix, gc_bounds, length_bounds, 
-     quality_threshold, save_filtered)
