@@ -11,7 +11,7 @@ gc_bounds = list(map(int, input('GC-interval using whitespace: ').split()))
 length_bounds = list(
     map(int, input('Length-interval using whitespace: ').split()))
 
-try: 
+try:
     quality_threshold = int(input('Quality threshold: '))
 except ValueError:
     quality_threshold = 0
@@ -30,11 +30,10 @@ def main(input_fastq, output_file_prefix, gc_bounds, length_bounds,
     gc_reads = list(filter(lambda arg: filter_gc(gc_bounds, arg), all_reads))
     length_reads = list(filter(lambda arg: filter_length(length_bounds, arg),
                                gc_reads))
-    quality_reads = list(filter(lambda arg:
-                                    filter_quality(quality_threshold, arg),
-                                    length_reads))
+    quality_reads = list(filter(lambda arg: filter_quality(quality_threshold, arg), length_reads))
     write_file(output_file_prefix, save_filtered, quality_reads, all_reads)
-    
+   
+ 
 def read_file(input_fastq):
     
     all_reads = []
@@ -47,6 +46,7 @@ def read_file(input_fastq):
             
     return all_reads
 
+
 def write_file(output_file_prefix, save_filtered, filtered_reads, all_reads):
     
     failed_reads = [i for i in all_reads if i not in filtered_reads]
@@ -55,14 +55,14 @@ def write_file(output_file_prefix, save_filtered, filtered_reads, all_reads):
     filtered_reads = [item for sublist in filtered_reads for item in sublist]
     
     with open(output_passed_fastq, 'w') as fp:
-            fp.write(''.join(filtered_reads))
+        fp.write(''.join(filtered_reads))
     
     if save_filtered:
         output_failed_fastq = output_file_prefix + '_failed.fastq'
         failed_reads = [item for sublist in failed_reads for item in sublist]
         
         with open(output_failed_fastq, 'w') as ff:
-                ff.write(''.join(failed_reads))
+            ff.write(''.join(failed_reads))
 
 
 def filter_gc(gc_bounds, list_):
@@ -110,4 +110,3 @@ def filter_quality(quality_threshold, list_):
     
     if bound >= quality_threshold:
         return list_
-
