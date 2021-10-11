@@ -1,3 +1,5 @@
-# BI_2021_Python
+**Second homework in Bioninformatics Institute by Python**
 
-This is python homework repository for study at *Bioinformatics Institute*.
+It is require 'currencyconverter' module. Run the command below in your terminal via pip/pip3:
+
+pip install currencyconverter
