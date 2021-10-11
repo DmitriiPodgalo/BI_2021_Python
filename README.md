@@ -1,4 +1,0 @@
-**Bioninformatics Institute Python Homework**
-
-
-
