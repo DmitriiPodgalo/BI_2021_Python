@@ -18,13 +18,13 @@ except ValueError:
 
 save_filtered = True if input('Save filtered reads (y/n): ') == 'y' else False
 
+if gc_bounds == []:
+    gc_bounds = [0, 100]
+if length_bounds == []:
+    length_bounds = [0, 2**32]
 
-def main(input_fastq, output_file_prefix, gc_bounds, length_bounds,
-         quality_threshold, save_filtered):
-    if gc_bounds == []:
-        gc_bounds = [0, 100]
-    if length_bounds == []:
-        length_bounds = [0, 2**32]
+def main(input_fastq, output_file_prefix, gc_bounds=[0, 100], length_bounds=[0, 2**32],
+         quality_threshold=0, save_filtered=False):
 
     all_reads = read_file(input_fastq)
     gc_reads = list(filter(lambda arg: filter_gc(gc_bounds, arg), all_reads))
