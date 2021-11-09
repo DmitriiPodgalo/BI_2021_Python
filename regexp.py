@@ -29,7 +29,7 @@ def words_a_match():
     pattern = r'\b\w*[Aa]+\w*\b'
 
     with open('2430AD') as inf:
-       text = inf.read()
+        text = inf.read()
 
     content = '\n'.join(re.findall(pattern, text))
     return content
@@ -40,7 +40,7 @@ def exclamation_point():
     pattern = r'[A-Z0-9][\w ,;:]+!'
 
     with open('2430AD') as inf:
-       text = inf.read()
+        text = inf.read()
 
     content = '\n'.join(re.findall(pattern, text))
     return content
@@ -52,7 +52,7 @@ def word_length_distribution():
     pattern = r'\b[A-z\']+\b'
 
     with open('2430AD') as inf:
-       text = inf.read()
+        text = inf.read()
 
     content = list(sorted(map(len, set(map(str.lower, re.findall(pattern, text))))))
 
