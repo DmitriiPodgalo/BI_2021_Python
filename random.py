@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 import re
 
+
 # 1 task
 def first_task():
     random_times = {}
@@ -41,7 +42,7 @@ def first_task():
 
     plt.title('Comparison random and numpy packages')
     plt.xlabel('Times')
-    plt.ylabel('$\mu\ seconds$')
+    plt.ylabel('$ \mu \ seconds $')
 
     plt.legend()
     plt.grid()
@@ -55,7 +56,7 @@ def is_sorted(list_):
 
 
 def monkey_sort(list_):
-    while (is_sorted(list_) == False):
+    while (is_sorted(list_) is False):
         np.random.shuffle(list_)
 
 
@@ -87,8 +88,8 @@ def times():
 
 
 # 3 task
-def random_walk(steps = 100):
-    random_steps = np.vstack((np.array([0, 0]), 
+def random_walk(steps=100):
+    random_steps = np.vstack((np.array([0, 0]),
                               np.random.normal(size=(steps, 2))))
     xs = random_steps[:, 0].cumsum()
     ys = random_steps[:, 1].cumsum()
