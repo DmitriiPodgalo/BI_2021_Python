@@ -42,7 +42,7 @@ def first_task():
 
     plt.title('Comparison random and numpy packages')
     plt.xlabel('Times')
-    plt.ylabel('$ \mu \ seconds $')
+    plt.ylabel('Microseconds')
 
     plt.legend()
     plt.grid()
