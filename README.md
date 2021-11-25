@@ -1,3 +1,3 @@
 # BI_2021_Python
 
-**Numpy homework in Bioinformatics Institute**
+**file.fastq for checking the program, I took this from Bioinformatics Practice**
