@@ -96,6 +96,7 @@ def random_walk(steps=100):
 
     plt.plot(xs, ys)
     plt.title('Random walk')
+    plt.show()
     plt.close()
 
 
@@ -117,6 +118,7 @@ def sierpinski_triangle():
 
     plt.scatter(xs, ys)
     plt.title('Sierpinski triangle')
+    plt.show()
     plt.close()
 
 
