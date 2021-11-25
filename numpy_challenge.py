@@ -25,7 +25,7 @@ def multiplication_check(m):
     rows = shapes_m[:, 0][1:]
     cols = shapes_m[:, 1][:-1]
     sum_ = (rows - cols).sum()
-    
+
     if sum_ == 0:
         return True
     else:
