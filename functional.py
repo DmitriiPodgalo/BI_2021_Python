@@ -12,16 +12,16 @@ def consensus_filter(*args):
 
 
 def conditional_reduce(func1, func2, container):
-   filt_container = list(filter(func1, container))
-   len_ = len(filt_container)
+    filt_container = list(filter(func1, container))
+    len_ = len(filt_container)
 
-   if len_ <= 1:
-       raise Exception('Not enough data for function 2')
-   else:
-       while len(filt_container) >= 2:
-           filt_container = [func2(*filt_container[:2])] + filt_container[2:]
+    if len_ <= 1:
+        raise Exception('Not enough data for function 2')
+    else:
+        while len(filt_container) >= 2:
+            filt_container = [func2(*filt_container[:2])] + filt_container[2:]
 
-   return filt_container[0]
+    return filt_container[0]
 
 
 def func_chain(*args):
