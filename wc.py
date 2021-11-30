@@ -24,13 +24,14 @@ def main():
             characters += len(line)
 
     if args.lines:
-        print(lines, end='\t') 
+        print(lines, end='\t')
     if args.words:
         print(words, end='\t')
     if args.characters:
         print(characters)
     if not (args.lines and args.words and args.characters):
         print(lines, words, characters, end='\t')
+
 
 def parser():
     parser = argparse.ArgumentParser()

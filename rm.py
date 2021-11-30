@@ -29,7 +29,7 @@ def is_dir(path):
     return os.path.isdir(path)
 
 
-def remove(path, r):    
+def remove(path, r):
     if is_file(path):
         os.remove(path)
     elif is_dir(path) and r:
@@ -37,4 +37,6 @@ def remove(path, r):
     elif is_dir(path):
         os.removedirs(path)
 
+
 main()
+
