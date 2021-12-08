@@ -16,38 +16,38 @@ if __name__ == "__main__":
 
 
 def matrix_multiplication(m1, m2):
-    return np.array(m1) * np.array(m2)
+    return np.array(m1).dot(np.array(m2))
 
 
 def multiplication_check(m):
     m = np.array(m)
+    shapes_m = np.array(list(map(np.shape, m)))
+    rows = shapes_m[:, 0][1:]
+    cols = shapes_m[:, 1][:-1]
+    sum_ = (rows - cols).sum()
 
-    try:
-        for i in range(0, len(m) - 1):
-            m[i] * m[i + 1]
-    except ValueError:
-        return False
-    else:
+    if sum_ == 0:
         return True
+    else:
+        return False
 
 
 def multiply_matrices(m):
     m = np.array(m)
     temp_matrix = np.array(m)[0]
 
-    try:
+    if multiplication_check(m):
         for i in range(1, len(m)):
             temp_matrix *= m[i]
-    except ValueError:
-        return None
-    else:
         return temp_matrix
+    else:
+        return None
 
 
 def compute_2d_distance(m1, m2):
     m1 = np.array(m1)
     m2 = np.array(m2)
-    return np.sqrt((m2[0] - m1[0]) ** 2 + (m2[1] - m1[1]) ** 2)
+    return np.sqrt(((m2 - m1) ** 2).sum())
 
 
 def compute_multidimensional_distance(m1, m2):
@@ -62,7 +62,7 @@ def compute_pair_distances(m):
 
     for i in range(m.shape[0]):
         for j in range(i, m.shape[0]):
-            m_out[i][j] = np.sqrt(((m[i] - m[j]) ** 2).sum())
-            m_out[j][i] = np.sqrt(((m[i] - m[j]) ** 2).sum())
+            m_out[i][j] = compute_multidimensional_distance(m[i], m[j])
+            m_out[j][i] = compute_multidimensional_distance(m[i], m[j])
 
-    return m_out.astype(int)
+    return m_out
