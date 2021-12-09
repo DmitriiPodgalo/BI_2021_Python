@@ -21,13 +21,12 @@ def main():
     else:
         args = parser()
         file = args.file
- 
+
         with open(file) as inf:
             for line in inf:
                 lines.append(line)
- 
+
     print(*sorted(lines), sep='', end='')
 
 
 main()
-
