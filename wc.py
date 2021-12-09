@@ -6,13 +6,38 @@ import argparse
 
 
 def main():
-    args = parser()
+    STDIN_EMPTY = sys.stdin.isatty()
+    args = parser(STDIN_EMPTY)
+    file = open(args.file).readlines() if STDIN_EMPTY else sys.stdin
+
+    lines, words, characters = counter(args, file)
+    print_counter(args, lines, words, characters)
+
+
+def parser(STDIN_EMPTY):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-l', '--lines', help='lines count', action='store_true')
+    parser.add_argument('-w', '--words', help='words count', action='store_true')
+    parser.add_argument('-c', '--characters', help='characters count', action='store_true')
+
+    if STDIN_EMPTY:
+        parser.add_argument('file')
+
+    return parser.parse_args()
+
+
+def words_count(line):
+    pattern = r'\b\w+\b'
+    return len(re.findall(pattern, line))
+
+
+def counter(args, file):
     lines = 0
     words = 0
     characters = 0
 
-    for line in sys.stdin:
-        if not (args.lines and args.words and args.characters):
+    for line in file:
+        if not (args.lines or args.words or args.characters):
             lines += 1
             words += words_count(line)
             characters += len(line)
@@ -23,27 +48,24 @@ def main():
         if args.characters:
             characters += len(line)
 
+    return lines, words, characters
+
+
+def print_counter(args, lines, words, characters):
+    print_list = []
+
+    if not (args.lines or args.words or args.characters):
+        print(lines, words, characters, sep='\t')
+        return
+
     if args.lines:
-        print(lines, end='\t')
+        print_list.append(lines)
     if args.words:
-        print(words, end='\t')
+        print_list.append(words)
     if args.characters:
-        print(characters)
-    if not (args.lines and args.words and args.characters):
-        print(lines, words, characters, end='\t')
+        print_list.append(characters)
 
-
-def parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-l', '--lines', help='lines count', action='store_true')
-    parser.add_argument('-w', '--words', help='words count', action='store_true')
-    parser.add_argument('-c', '--characters', help='characters count', action='store_true')
-
-    return parser.parse_args()
-
-
-def words_count(line):
-    return len(re.findall(r'\b\w+\b', line))
+    print(*print_list, sep='\t')
 
 
 main()
