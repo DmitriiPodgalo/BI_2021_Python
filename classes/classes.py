@@ -95,7 +95,6 @@ class FastAnalyse():
 
         return (str(round(counter / sum_ * 100, 2)) + '%')
 
-
     def counter_4mer(self):
 
         dict_ = {}
