@@ -5,11 +5,12 @@ from random import random
 def mesure_time(func):
     def inner_function(*args, **kwargs):
         start = time()
-        result = func(*args, **kwargs)
+        func(*args, **kwargs)
         end = time()
         time_ = end - start
         return time_
     return inner_function
+
 
 def function_logging(func):
     def inner_function(*args, **kwargs):
@@ -27,6 +28,7 @@ def function_logging(func):
         return result
     return inner_function
 
+
 def russian_roulette_decorator(probability, return_value):
     def decorator(func):
         def inner_func(*args, **kwargs):
@@ -34,6 +36,7 @@ def russian_roulette_decorator(probability, return_value):
             return result if random() > probability else return_value
         return inner_func
     return decorator
+
 
 if __name__ == 'main':
 
@@ -76,4 +79,3 @@ if __name__ == 'main':
 
     for _ in range(10):
         print(work(2, 4))
-
