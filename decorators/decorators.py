@@ -41,7 +41,6 @@ def russian_roulette_decorator(probability, return_value):
 if __name__ == 'main':
 
     # First task
-
     @mesure_time
     def work(a, b):
         return a * b
@@ -49,7 +48,6 @@ if __name__ == 'main':
     print(work(2, 4))
 
     # Second task
-
     @function_logging
     def func1():
         return set()
@@ -72,7 +70,6 @@ if __name__ == 'main':
     print(func4(a=None, b=float('-inf')))
 
     # Third task
-
     @russian_roulette_decorator(0.9, 10)
     def work(a, b):
         return a * b
