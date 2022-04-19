@@ -16,7 +16,7 @@ def parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--fasta', type=str)
     parser.add_argument('-t', '--threads', default=1, type=int)
-    
+ 
     return parser.parse_args()
 
 
@@ -36,3 +36,4 @@ def counter(record):
 if __name__ == '__main__':
     args = parser()
     reader(path=args.fasta, threads=args.threads)
+
